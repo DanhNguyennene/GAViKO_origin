@@ -1,3 +1,4 @@
+
 {
   'utils':{
     'log_dir': './src/log',
@@ -6,9 +7,9 @@
   'data':{
     'batch_size': 4,
     'num_workers': 8,
-    'data_path': '/mnt/e/workspace/gsoft/GAViKO_origin/dataset/unified_xray_mri_label_processed.csv', # path to the CSV file containing image paths and labels
-    'image_folder': '/mnt/e/workspace/gsoft/GAViKO_origin/dataset/part1',
-    'test_data': '/mnt/e/workspace/gsoft/GAViKO_origin/dataset/unified_xray_mri_label_processed.csv' # path to the CSV file containing test image paths and labels
+    'data_path': '/kaggle/input/mri-for-gaviko/dataset/unified_xray_mri_label_processed.csv', # path to the CSV file containing image paths and labels
+    'image_folder': '/kaggle/input/mri-for-gaviko/dataset/part1',
+    'test_data': '/kaggle/input/mri-for-gaviko/dataset/unified_xray_mri_label_processed.csv' # path to the CSV file containing test image paths and labels
   },
   'model':{
       'image_size':160,
@@ -47,6 +48,7 @@
       'accumulation_steps': 1,
       'save_dir': './src/weights/',
       'save_threshold': 0.0,  # save weights if accuracy > 0.60, 0 for debugging
+      'fp16': True,  # Enable mixed precision training
       'scheduler': {
         'max_lr': 3e-4,  # highest learning rate
         # 'total_steps': total_steps,
@@ -59,7 +61,7 @@
       'patience': 15,  # number of epochs with no improvement before stopping training
       'deepspeed': {
         'enabled': False,  # Enable DeepSpeed
-        'config': '/mnt/e/workspace/gsoft/GAViKO_origin/src/configs/deepspeed.yaml'  # Path to DeepSpeed config file
+        'config': '/kaggle/working/GAViKO_origin/src/configs/deepspeed.yaml'  # Path to DeepSpeed config file
       },
       'memory_verbose': True,  # Enable memory verbose for debugging
       'flops_calculation': True,  # Enable FLOPs calculation for validation
